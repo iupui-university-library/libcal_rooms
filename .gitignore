@@ -1,0 +1,5 @@
+# Ignore configuration file.
+config.php
+
+# Ignore vendor code
+vendor/*
