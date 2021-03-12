@@ -6,7 +6,7 @@ return (object) array(
     'base_url'      => 'http://localhost/libcal_rooms/public',
     'locid'         => 'xxxx',
     'hoursid'       => 'yyyy', // building Location for hours
-    'qid_username'  => 'qxxxx',
+    'qid_username'  => 'qxxxx', // optional field, may not be needed.
     'debug'         => false,
     'timezone'      => 'America/New_York',
     'max'           => 4, // Maximium hours room can be reserved.
