@@ -65,7 +65,7 @@ class API
  * spaces, cats, cat, item, bookings
  *
  * Exampe usage:
- * $api = new APIFetch($action, $id, $date);
+ * $api = new APIFetch($action, $options);
  * print $api->getJSON();
  *
  */
@@ -76,25 +76,29 @@ class APIFetch extends API
    */
   public $action;
   public $id;
-  public $url;
   public $date;
   public $category;
+  public $email;
   public $token;
+  public $url;
 
   /**
    * Construct function
-   * @param $action, $id (optional), $date (optional) [string, string, string]
-   *        - action to perform, booking id if needed, date if needed
+   * @param $action [String],
+   * @param $options [Array] - token, id, date, category, email
    */
-  public function __construct($action, $id = '', $date = false, $token = false, $category = false)
+  public function __construct($action, $options = array())
   {
     parent::__construct();
     $actions = array('spaces', 'cats', 'cat', 'item', 'booking', 'bookings', 'room_bookings', 'hours', 'events', 'event');
     $this->action = in_array($action, $actions) ? $action : false;
-    $this->id = $id;
-    $this->date = $date;
-    $this->token = ($token) ? $token : $this->getToken();
-    $this->category = $category;
+    // Set options
+    $this->token = isset($options['token']) ? $options['token'] : $this->getToken();
+    $this->id = isset($options['id']) ? $options['id'] : false;
+    $this->date = isset($options['date']) ? $options['date'] : false;
+    $this->category = isset($options['category']) ? $options['category'] : false;
+    $this->email = isset($options['email']) ? $options['email'] : false;
+    // API URL
     $this->url = $this->getURL();
   }
 
@@ -154,6 +158,8 @@ class APIFetch extends API
         $lid = $app['locid'];
         $function = 'space/bookings?formAnswers=1&limit=100&lid=' . $lid;
         if($this->date) $function .= "&date=" . $this->date;
+        $function .= "&days=100";
+        if($this->email) $function .= "&email=" . $this->email;
         break;
       case 'room_bookings':
         $function = 'space/bookings?formAnswers=1&limit=100&eid=' . $this->id;

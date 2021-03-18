@@ -17,7 +17,8 @@ if(!($room_id && $reservation_date)) { exit(json_encode (json_decode ('{"Error":
 
 // Get availabilites
 // Date shoud be in Y-m-d
-$api = new APIFetch('item', $room_id, $reservation_date);
+$options = array('id' => $room_id, 'date' => $reservation_date);
+$api = new APIFetch('item', $options);
 $api_json = $api->getJSON();
 $api_arry = json_decode($api_json, true);
 $availability = $api_arry[0]['availability'];

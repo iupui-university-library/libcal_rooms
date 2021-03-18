@@ -9,8 +9,8 @@
  */
 function api_get_hours($date) {
   global $app;
-
-  $hours_api = new APIFetch('hours', $app['hoursid'], $date);
+  $options = array('id' => $app['hoursid'], 'date' => $date);
+  $hours_api = new APIFetch('hours', $options);
   $hours_json = $hours_api->getJSON();
   $hours_array = json_decode($hours_json, true);
   return $hours_array[0]['dates'];
@@ -23,7 +23,8 @@ function api_get_hours($date) {
  * @return [array] - API results as array
  */
 function api_get_rooms($cid, $date) {
-  $rooms_api = new APIFetch('cat', $cid, $date);
+  $options = array('id' => $cid, 'date' => $date);
+  $rooms_api = new APIFetch('cat', $options);
   $rooms_json = $rooms_api->getJSON();
   $rooms_array = json_decode($rooms_json, true, 256);
   return $rooms_array[0]['items'];
@@ -36,7 +37,8 @@ function api_get_rooms($cid, $date) {
  * @return [array] - API results as array
  */
 function api_get_room($id, $date = false) {
-  $room_api = new APIFetch('item', $id, $date);
+  $options = array('id' => $id, 'date' => $date);
+  $room_api = new APIFetch('item', $options);
   $room_json = $room_api->getJSON();
   $room_array = json_decode($room_json, true, 256);
   return $room_array[0];
@@ -49,7 +51,7 @@ function api_get_room($id, $date = false) {
 function api_get_cats() {
   global $app;
 
-  $cat_api = new APIFetch('cats', $app['locid']);
+  $cat_api = new APIFetch('cats', array('id' => $app['locid']));
   $cat_json = $cat_api->getJSON();
   $cat_arry = json_decode($cat_json, true);
   return $cat_arry[0]['categories'];
