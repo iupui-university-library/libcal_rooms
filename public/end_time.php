@@ -20,7 +20,8 @@ $max = !(empty($_GET['max'])) ? (int) $_GET['max'] : 24;
 
 // Get availabilites
 $date = date("Y-m-d", strtotime($start));
-$api = new APIFetch('item', $id, $date);
+$options = array('id' => $id, 'date' => $date);
+$api = new APIFetch('item', $options);
 $api_json = $api->getJSON();
 $api_arry = json_decode($api_json, true);
 $availability = $api_arry[0]['availability'];
