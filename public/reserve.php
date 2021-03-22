@@ -27,6 +27,7 @@ foreach($cats as $cat){
 <body>
   <?php include "../templates/header.php" ?>
   <main>
+    <h2>Make a reservation</h2>
     <form method="get" action="confirm.php">
       <div class="input-group mb-3">
         <label class="input-group-text" for="fname">First Name</label>
@@ -71,6 +72,9 @@ foreach($cats as $cat){
       </div>
       <input id="confirm-submit" type="submit" value="Confirm" disabled>
     </form>
+    <nav class="nav">
+      <a href="index.php" class="nav-link">More Examples</a>
+    </nav>
   </main>
   <?php include "../templates/footer.php" ?>
 </body>
