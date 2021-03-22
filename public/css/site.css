@@ -1,1 +1,30 @@
 /* CSS for Libcal Rooms */
+
+/* header */
+.body-header {
+  background-color: #7d110c;
+  color: #ffffff;
+}
+
+h1 a,
+h1 a:hover{
+  color: #ffffff;
+  text-decoration: none;
+}
+
+
+/* main */
+main {
+  padding:20px 10px;
+}
+
+/* footer */
+.body-footer {
+  background-color: #4a3c31;
+  color: #ffffff;
+}
+
+.body-footer a,
+.body-footer a:hover {
+  color: #ffffff
+}

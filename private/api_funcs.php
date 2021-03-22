@@ -50,10 +50,21 @@ function api_get_room($id, $date = false) {
  */
 function api_get_cats() {
   global $app;
-
   $cat_api = new APIFetch('cats', array('id' => $app['locid']));
   $cat_json = $cat_api->getJSON();
   $cat_arry = json_decode($cat_json, true);
   return $cat_arry[0]['categories'];
+}
+
+/**
+ * Get bookings
+ * @return [array] - API results as array
+ */
+function api_get_bookings() {
+  global $app;
+  $bookings_api = new APIFetch('bookings', array('id' => $app['locid']));
+  $bookings_json = $bookings_api->getJSON();
+  $bookings_arry = json_decode($bookings_json, true);
+  return $bookings_arry;
 }
 ?>
