@@ -4,7 +4,7 @@ making room reservations through simple and quick user interfaces.
 
 # Dependencies
 
-* Composer - to install php packages
+* Composer
 * OAuth 2.0 Client
 * Bootstrap
 * Bootstrap datepicker
