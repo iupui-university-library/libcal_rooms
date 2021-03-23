@@ -31,7 +31,7 @@ function api_get_rooms($cid, $date) {
 }
 
 /**
- * Retrive room
+ * Retrieve room
  * @param $id [integer] - room id
  * @param $date [string] - date in 'Y-m-d' format
  * @return [array] - API results as array
